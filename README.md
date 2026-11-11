@@ -30,7 +30,7 @@ The data for this project is sourced from the Kaggle dataset:
 	    description   VARCHAR(1000)
 	 );
 ## Business Problems and Solutions
-# 1. Count the Number of Movies vs TV Shows
+## 1. Count the Number of Movies vs TV Shows
 		select 
 			type_,
 			count(*) as total_content
@@ -38,7 +38,7 @@ The data for this project is sourced from the Kaggle dataset:
 		Group by 1;
 Objective: Determine the distribution of content types on Netflix.
 
-2. Find the Most Common Rating for Movies and TV Shows
+## 2. Find the Most Common Rating for Movies and TV Shows
 	select 
 	type_,
 	rating
@@ -57,7 +57,7 @@ Objective: Determine the distribution of content types on Netflix.
       
 Objective: Identify the most frequently occurring rating for each type of content.
 
-3. List All Movies Released in a Specific Year (e.g., 2020)
+## 3. List All Movies Released in a Specific Year (e.g., 2020)
 	select *
 	from netflix
 	where 
@@ -65,7 +65,7 @@ Objective: Identify the most frequently occurring rating for each type of conten
 		and
 		release_year = 2020;
 
-4. Find the Top 5 Countries with the Most Content on Netflix
+## 4. Find the Top 5 Countries with the Most Content on Netflix
 	select 
 		unnest(string_to_array(Country,',')) as new_country,
 		count(show_id) as Total_content
@@ -75,21 +75,21 @@ Objective: Identify the most frequently occurring rating for each type of conten
 	limit 5;
 Objective: Identify the top 5 countries with the highest number of content items.
 
-5. Identify the Longest Movie
+## 5. Identify the Longest Movie
 	select * from netflix
 	where 
 		type_ = 'Movie'
 		and 
 		duration = (select max(duration)from netflix);
 
-6. Find Content Added in the Last 5 Years
+## 6. Find Content Added in the Last 5 Years
 	select * from netflix
 	where 
 		to_date(date_added, 'Month DD, YYYY') >= current_date - interval '8 years';
 
 Objective: Retrieve content added to Netflix in the last 5 years.
 
-7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
+## 7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
 	Select * 
 	from ( 
 		select 
@@ -104,7 +104,7 @@ Objective: Retrieve content added to Netflix in the last 5 years.
 
 Objective: List all content directed by 'Rajiv Chilaka'.
 
-8. List All TV Shows with More Than 5 Seasons
+## 8. List All TV Shows with More Than 5 Seasons
 	select *
 	from netflix
 	where 
@@ -113,7 +113,7 @@ Objective: List all content directed by 'Rajiv Chilaka'.
 	split_part(duration,' ',1) :: numeric > 5;
 	
 
-9. Count the Number of Content Items in Each Genre
+## 9. Count the Number of Content Items in Each Genre
 	Select 
 	unnest(string_to_array(listed_in,',')) as genre,
 	count(show_id) as total_content
@@ -121,18 +121,18 @@ Objective: List all content directed by 'Rajiv Chilaka'.
 	group by 1;
 Objective: Count the number of content items in each genre.
 
-10. List All Movies that are Documentaries
+## 10. List All Movies that are Documentaries
 	Select *,
 	from netflix 
 	where listed_in ilike '%Documentaries%';
 
-11. Find All Content Without a Director
+## 11. Find All Content Without a Director
 	select * 
 	from netflix
 	where director is null;
 Objective: List content that does not have a director.
 
-12. Find How Many Movies Actor 'Salman Khan' Appeared in the Last 15 Years
+## 12. Find How Many Movies Actor 'Salman Khan' Appeared in the Last 15 Years
 	select *
 	from netflix
 	where casts ilike '%Salman Khan%'
@@ -141,7 +141,7 @@ Objective: List content that does not have a director.
 
 Objective: Count the number of movies featuring 'Salman Khan' in the last 15 years.
 
-13. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
+## 13. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
 	select 
 		unnest(string_to_array(casts,','))as Actor,
 		count(*) as total_content
@@ -155,7 +155,7 @@ Objective: Count the number of movies featuring 'Salman Khan' in the last 15 yea
 
 Objective: Identify the top 10 actors with the most appearances in Indian-produced movies.
 
-14. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
+## 14. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
 label content containing these keywords as 'Bad' and all other content as 'Good'.
 	count how many items fall into each category.
 

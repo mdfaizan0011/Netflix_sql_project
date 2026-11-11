@@ -31,11 +31,11 @@ The data for this project is sourced from the Kaggle dataset:
     );
 ## Business Problems and Solutions
 # 1. Count the Number of Movies vs TV Shows
-SELECT 
-    type,
-    COUNT(*)
-FROM netflix
-GROUP BY 1;
+	select 
+		type_,
+		count(*) as total_content
+	from netflix
+	Group by 1;
 Objective: Determine the distribution of content types on Netflix.
 
 2. Find the Most Common Rating for Movies and TV Shows

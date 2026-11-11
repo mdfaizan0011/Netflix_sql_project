@@ -14,7 +14,7 @@ The data for this project is sourced from the Kaggle dataset:
 
 ## Dataset Link: Movies Dataset
 ## Schema
-    Create table netflix
+Create table netflix
     (
 	show_id       VARCHAR(10),
     type_         VARCHAR(10),
@@ -28,7 +28,7 @@ The data for this project is sourced from the Kaggle dataset:
     duration      VARCHAR(50),
     listed_in     VARCHAR(300),
     description   VARCHAR(1000)
-    );
+ );
 ## Business Problems and Solutions
 # 1. Count the Number of Movies vs TV Shows
 	select 
